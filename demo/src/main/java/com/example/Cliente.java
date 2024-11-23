@@ -1,14 +1,16 @@
 package com.example.Entidad;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.*;
+import javax.persistence.Column;
 
-@Entidad
+@Entity
 public class Cliente {
+
     @Id
-    @GeneratedValue((strategy = GenerationType.IDENTITY))
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "nombre")
@@ -20,35 +22,35 @@ public class Cliente {
     @Column(name = "telefono")
     private int telefono;
 
-    public long getId (){
+    public long getId() {
         return id;
     }
 
-    public void setId (long id){
-        this.id;
+    public void setId(long id) {
+        this.id = id; 
     }
 
-    public String getNombre (){
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre (String nombre){
-        this.nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;  
     }
 
-    public String getEmail (){
-        return.email;
+    public String getEmail() {
+        return email;  
     }
 
-    public void setEmail (String email){
-        this.email;
+    public void setEmail(String email) {
+        this.email = email;  
     }
 
-    public int getTelefono (){
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono (int telefono){
-        this.telefono;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;  
     }
 }

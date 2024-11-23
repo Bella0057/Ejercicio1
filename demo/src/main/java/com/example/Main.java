@@ -9,55 +9,55 @@ public class Main {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUnidadPersistencia");
 
     public static void main(String[] args) {
-        crearCliente("jhon jairo", "jhonpro@gmail.com", 3215874621);
-        cliente cliente1 = leerCliente(1l);
+        crearCliente("Isabella Pedraza", "iszp999@gmail.com", 32225072931);
+        Cliente cliente1 = leerCliente(1L);
         if (cliente1 != null){
-            System.out.println("El cliente fue encontrado: " + Cliente.getNombre)
+            System.out.println("El cliente fue encontrado: " + cliente1.getNombre());
         }
-        actualizarCliente(1l);
-        eliminarCliente(1l);
+        actualizarCliente(1L, "Jhon Jairo Updated", "jhonupdated@gmail.com", 3215874622);
+        eliminarCliente(1L);
     }
 
-    //crear cliente
+    // Crear cliente
     public static void crearCliente(String nombre, String email, int telefono){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
         Cliente cliente1 = new Cliente();
-    cliente1.setNombre(nombre)
-    cliente1.setEmail(email)
-    cliente1.setTelefono(telefono)
+        cliente1.setNombre(nombre);
+        cliente1.setEmail(email);
+        cliente1.setTelefono(telefono);
 
-    em.persist(cliente1)
-    em.getTransaction().commit();
-    em.close();
+        em.persist(cliente1);
+        em.getTransaction().commit();
+        em.close();
     }
 
-    //leer cliente
-    public static void leerCliente(long id){
+    // Leer cliente
+    public static Cliente leerCliente(long id){
         EntityManager em = emf.createEntityManager();
-    Cliente cliente1 = em.find(Cliente.class, id);
-    em.close();
-    return cliente1;
+        Cliente cliente1 = em.find(Cliente.class, id);
+        em.close();
+        return cliente1;
     }
 
-    //actualizar cliente
-    public static void actualizarCliente (long id, String nuevoNombre, String nuevoEmail, int nuevoTelefono){
+    // Actualizar cliente
+    public static void actualizarCliente(long id, String nuevoNombre, String nuevoEmail, int nuevoTelefono){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
         Cliente cliente1 = em.find(Cliente.class, id);
         if (cliente1 != null){
-            Cliente.setNombre(nuevoNombre);
-            Cliente.setEmail(nuevoEmail);
-            Cliente.setTelefono(nuevoTelefono);
+            cliente1.setNombre(nuevoNombre);
+            cliente1.setEmail(nuevoEmail);
+            cliente1.setTelefono(nuevoTelefono);
             em.merge(cliente1);
         }
         em.getTransaction().commit();
         em.close();
     }
 
-    //Eliminar clientes
+    // Eliminar cliente
     public static void eliminarCliente(long id){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
